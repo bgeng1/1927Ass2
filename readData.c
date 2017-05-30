@@ -25,14 +25,29 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #include "readData.h"
 #include "graph.h"
 
-list getCollection(){
+List getCollection(){
+    FILE *collection = fopen("collection.txt", "r");
+
+    char list[10]
+    char save[10];
+
+    int i;
+    for (i = 0; (fscanf(collection, "%s", save) != EOF); i++)
+    {
+        int n;
+        for (n = 0; n <= 9; n++)
+        {
+            list[n] = save;
+            printf("%c", list[n]);
+        }
+    }
+    fclose(collection);
+}
+
+Graph getGraph(){
 
 }
 
-graph getGraph(){
-
-}
-
-list getInvertedList(){
+List getInvertedList(){
 
 }
