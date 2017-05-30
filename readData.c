@@ -25,4 +25,14 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #include "readData.h"
 #include "graph.h"
 
-ahh
+list getCollection(){
+
+}
+
+graph getGraph(){
+
+}
+
+list getInvertedList(){
+
+}
