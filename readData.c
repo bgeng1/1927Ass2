@@ -32,11 +32,14 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 List getCollection(FILE *collection){
 
     char urlList[listLength][urlLength];
-
     int i;
+  
     for (i = 0; (fscanf(collection, "%s", list[i]) != EOF); i++)
     {
             //printf(" %s \n", list[i]);
+            strcat(list[i],".txt");
+            if(strncmp(list[i],"Section-1",25)==0) i = -1;
+            if(strncmp(list[i],"#end",17)==0) break;
         
     }
     //fclose(collection);
