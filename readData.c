@@ -25,20 +25,23 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #include "readData.h"
 #include "graph.h"
 
+#define urlLength 100
+#define listLength 100
+
 List getCollection(){
+
     FILE *collection = fopen("collection.txt", "r");
 
-    char *list[1000]
-    char save[1000];
+    char urlList[listLength][urlLength];
 
     int i;
-    for (i = 0; (fscanf(collection, "%s", save) != EOF); i++)
+    for (i = 0; (fscanf(collection, "%s", list[i]) != EOF); i++)
     {
-            list[i] = save;
-            printf("%s", list[i]);
+            //printf(" %s \n", list[i]);
         
     }
     fclose(collection);
+    return urlList;
 }
 
 Graph getGraph(){
