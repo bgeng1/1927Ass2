@@ -28,13 +28,13 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 List getCollection(){
     FILE *collection = fopen("collection.txt", "r");
 
-    char *list[10]
-    char save[10];
+    char *list[1000]
+    char save[1000];
 
     int i;
     for (i = 0; (fscanf(collection, "%s", save) != EOF); i++)
     {
-            list[i] = strdup(save);
+            list[i] = save;
             printf("%s", list[i]);
         
     }
