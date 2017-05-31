@@ -53,12 +53,21 @@ List getCollection(FILE *collection){
 Graph getGraph(List collection){
   Graph new = newGraph(50);
   char listOutbound[50][50];
-  for(n = 0; collection[n]=="#end" ;n++){
-   	FILE *urlFile = fopen(collection[0],"r");
-    	for(x = 0; (fscanf(urlFile, "%s", listOutbound))!="#end"; x++;){
-      		//will have .txt on the end (might need to fix)
-		addVertex(collection[0],new,x);
-		addEdge(new, 
+  for(i = 0; collection[n]!="#end"; i++){
+  	//will have .txt on the end (need to fix)
+	addVertex(collection[i],new,i);
+  }
+  for(n = 0; collection[n]!="#end" ;n++){
+   	FILE *urlFile = fopen(collection[n],"r");
+    	for(x = 0; (fscanf(urlFile, "%s", listOutbound[x]))!=EOF; x++;)
+	{
+            if(strncmp(list[i],"Section-1",25)==0) x = -1;
+            if(strncmp(list[i],"#end",17)==0) break;
+        
+    	}	
+	for(y = 0; listOutbound[y]!="#end"; y++)
+	{
+		addEdge(new, collection[n],listOutbound[x]);
 		
     	}	
 
