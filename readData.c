@@ -37,40 +37,48 @@ List getCollection(FILE *collection){
 
     char urlList[listLength][urlLength];
     int i;
+
   
-    for (i = 0; (fscanf(collection, "%s", list[i]) != EOF); i++)
+    for (i = 0; (fscanf(collection, "%s", urlList[i]) != EOF); i++)
     {
-            //printf(" %s \n", list[i]);
-            strcat(list[i],".txt");
-            if(strncmp(list[i],"Section-1",25)==0) i = -1;
-            if(strncmp(list[i],"#end",17)==0) break;
+            //printf(" %s \n", urlList[i]);
+        strcat(urlList[i],".txt");
+        if(strcmp(urlList[i],"Section-1")==0) i = -1;
+        if(strcmp(urlList[i],"#end")==0) break;
         
     }
     //fclose(collection);
-    return urlList;
+    char **temp = (char**)urlList;
+    return temp;
 }
 
 Graph getGraph(List collection){
+  printf("im in getgraph \n");
   Graph new = newGraph(50);
   char listOutbound[50][50];
-  for(i = 0; collection[n]!="#end"; i++){
+  int i,n = 0,x,y;
+  char **names = malloc(sizeof(char)*1000); 
+  //printf("variables set \n");
+  for(i = 0; strcmp(collection[n],"#end")!=0; i++){
   	//will have .txt on the end (need to fix)
-	addVertex(collection[i],new,i);
+	     addVertex(collection[i],names,i);
   }
-  for(n = 0; collection[n]!="#end" ;n++){
-   	FILE *urlFile = fopen(collection[n],"r");
-    	for(x = 0; (fscanf(urlFile, "%s", listOutbound[x]))!=EOF; x++;)
-	{
-            if(strncmp(list[i],"Section-1",25)==0) x = -1;
-            if(strncmp(list[i],"#end",17)==0) break;
-        
-    	}	
-	for(y = 0; listOutbound[y]!="#end"; y++)
-	{
-		addEdge(new, collection[n],listOutbound[x]);
-		
-    	}	
+  printf("vertex added \n");
+  for(n = 0; strcmp(collection[n],"#end")!= 0 ;n++){
+        FILE *urlFile = fopen(collection[n],"r");
+        for(x = 0; (fscanf(urlFile, "%s", listOutbound[x]))!=EOF; x++)
+        {
+          if(strcmp(listOutbound[i],"Section-1")==0) x = -1;
+          if(strcmp(listOutbound[i],"#end")==0) break;
 
+        }
+        printf("reached end of document for %dth url of the collection \n",n);
+	     for(y = 0; strcmp(listOutbound[y],"#end")!=0; y++)
+	     {
+		      addEdge(new, collection[n],listOutbound[x]);
+		
+    	 }	
+       printf("added all outgoing edges for above url \n");
   }
   return new;
 }
