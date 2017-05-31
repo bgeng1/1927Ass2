@@ -28,7 +28,7 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #define urlLength 100
 #define listLength 100
 
-List getCollection(){
+List getCollection(FILE *collection){
 
     FILE *collection = fopen("collection.txt", "r");
 
