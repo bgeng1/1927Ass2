@@ -31,8 +31,8 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #define MAXWORDSIZE 30
 
 
-
-//need to define a list (array of strings) - how to do that?
+typedef char** List;
+//need to typedef a list (array of strings) - how to do that?
 List getCollection(FILE *collection){
 
     char urlList[listLength][urlLength];
@@ -51,15 +51,17 @@ List getCollection(FILE *collection){
 }
 
 Graph getGraph(List collection){
-  Graph new = newGraph(100);
-  int i = 0;
-  collection[i]??
-  for(n = 0; n < something ;n++){
-/*draft    FILE *urlFile = fopen(collection[0],"r");
-    for(x = 0; (fscanf(urlFile, "%s", listOutbound); x++;){
-      listOutbound[x]
-    }
-*/
+  Graph new = newGraph(50);
+  char listOutbound[50][50];
+  for(n = 0; collection[n]=="#end" ;n++){
+   	FILE *urlFile = fopen(collection[0],"r");
+    	for(x = 0; (fscanf(urlFile, "%s", listOutbound))!="#end"; x++;){
+      		//will have .txt on the end (might need to fix)
+		addVertex(collection[0],new,x);
+		addEdge(new, 
+		
+    	}	
+
   }
   return new;
 }
