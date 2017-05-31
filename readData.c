@@ -28,9 +28,8 @@ InvertedList <-- GetInvertedList(List_of_Urls )
 #define urlLength 100
 #define listLength 100
 
+//need to define a list (array of strings) - how to do that?
 List getCollection(FILE *collection){
-
-    FILE *collection = fopen("collection.txt", "r");
 
     char urlList[listLength][urlLength];
 
