@@ -39,12 +39,15 @@ List getCollection(FILE *collection){
             //printf(" %s \n", list[i]);
         
     }
-    fclose(collection);
+    //fclose(collection);
     return urlList;
 }
 
-Graph getGraph(){
-
+Graph getGraph(List collection){
+  Graph new = newGraph(100);
+  int i = 0;
+  collection[i]??
+  return new;
 }
 
 List getInvertedList(){
