@@ -60,6 +60,34 @@ Graph getGraph(List collection){
   return new;
 }
 
-List getInvertedList(){
+List getInvertedList(BSTree todoT, Queue todoQ){
+	int counter = 1;
+	char *current;
+	char buffer[MAXWORDSIZE];
+	char name[MAXNAMESIZE];
+	FILE *fp;
 
+	while(!emptyQueue(todoQ)){
+		current = leaveQueue(todoQ);
+		sprintf(name, "%s.txt",current);
+		fp = fopen(name, "r");
+
+		while(strcmp(buffer,"Section-2") != 0){
+			fscanf(fp,%s,buff);
+		}
+
+		fscanf(fp, "%s", buff);
+
+		while(strcmp(buffer, "#end") != 0){
+			if(counter = 1){
+				todoT = BSTreeInsert(todoT, cleanString(buffer),cleanString(current));
+			}
+			else {
+				//BSTreeInsert(newT, CleanString(buffer),CleanString(current));
+				counter = 0;
+			}
+			fscanf(fp,"%s",buffer);
+		}
+		fclose(fp);
+	}
 }
