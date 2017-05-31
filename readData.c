@@ -47,6 +47,13 @@ Graph getGraph(List collection){
   Graph new = newGraph(100);
   int i = 0;
   collection[i]??
+  for(n = 0; n < something ;n++){
+/*draft    FILE *urlFile = fopen(collection[0],"r");
+    for(x = 0; (fscanf(urlFile, "%s", listOutbound); x++;){
+      listOutbound[x]
+    }
+*/
+  }
   return new;
 }
 
