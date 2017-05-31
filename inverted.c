@@ -20,6 +20,7 @@ Output  invertedIdx to  “invertedIndex.txt”
 #include "inverted.h"
 #include "queue.h"
 #include "BSTree.h"
+#include "set.h"
 
 #define MAXNAMESIZE 10
 #define MAXWORDSIZE 20
@@ -45,45 +46,19 @@ typedef struct SetRep {
     Link  elems;
 } SetRep;
 
+void getQueueCollection(Queue q);
+void printTree(BSTree t, FILE *toPrint);
+
 int main(void){
 
 	Queue newQ = newQueue();
-	getCollection(newQ);
+	getQueueCollection(newQ);
 
 	BSTree newT = newBSTree();
-	
 
-	//maybe make this into it's own function?
-	int counter = 1;
-	char *current;
-	char buffer[MAXWORDSIZE];
-	char name[MAXNAMESIZE];
-	FILE *fp;
-
-	while(!emptyQueue(newQ)){
-		current = leaveQueue(newQ);
-		sprintf(name, "%s.txt",current);
-		fp = fopen(name, "r");
-
-		while(strcmp(buffer,"Section-2") != 0){
-			fscanf(fp,%s,buff);
-		}
-
-		fscanf(fp, "%s", buff);
-
-		while(strcmp(buffer, "#end") != 0){
-			if(counter = 1){
-				newT = BSTreeInsert(newT, cleanString(buffer),cleanString(current));
-			}
-			else {
-				//BSTreeInsert(newT, CleanString(buffer),CleanString(current));
-				counter = 0;
-			}
-			fscanf(fp,"%s",buffer);
-		}
-		fclose(fp);
-	}
-	//make extra changes to newT?
+	//shortened function --> placed into readData.c as getInvertedList
+	//(changed from getTree)
+	newT = getInvertedList(newT,newQ);
 
 	//FILE *fpdummy;
 	fp = fopen("invertedIndex.txt","w");
@@ -95,7 +70,7 @@ int main(void){
 }
 
 /**
-maybe just include normalisation in other function
+maybe just merge normalisation into other function
 
 void normalise(char *string){
 	while(){
@@ -113,7 +88,9 @@ void printTree(BSTree t, FILE *toPrint){
 	printTree(t->right, toPrint);
 }
 
-void getCollection(Queue q){
+//changed from getCollection -> getQueueCollection to avoid confusion
+//(thought getCollection may still work, have yet to test)
+void getQueueCollection(Queue q){
 	char buffer[MAXBUFFSIZE];
 	FILE *fp;
 	assert(fp != NULL);
@@ -124,11 +101,11 @@ void getCollection(Queue q){
 	while(fscanf(fp, "%s", buffer) > 0){
 		if(!isElem(newS,buffer)){
 			enterQueue(q,buffer);
-			//slightly edited version of set's insertInto() function
+			//slightly edited version of set.h's insertInto() function
 			Link curr, prev;
 			int found = findNode(newS->elems,str,&curr,&prev);
 			if(found) return;
-			Link newN = newNode(str,0);
+			Link newN = newNode(str,max);
 			newS->arraylen = 0;
 
 			newS->nelems++;
